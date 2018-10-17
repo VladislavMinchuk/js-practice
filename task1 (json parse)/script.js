@@ -1,3 +1,5 @@
+// Mother-child age difference ========================================
+
 var ANCESTRY_FILE = JSON.stringify([
 	{"name": "Carolus Haverbeke", "sex": "m", "born": 1832, "died": 1905, "father": "Carel Haverbeke", "mother": "Maria van Brussel"},
 	{"name": "Emma de Milliano", "sex": "f", "born": 1876, "died": 1956, "father": "Petrus de Milliano", "mother": "Sophia van Damme"},
@@ -42,37 +44,15 @@ var ANCESTRY_FILE = JSON.stringify([
 
 var ancestry = JSON.parse(ANCESTRY_FILE);
 
-function searchParent(array,parent) {
-	var allParents=[],allGender={},genderArr=[];
-	if(parent=="mother"){
-			allParents=array.filter(function(person){
-				return person["sex"]=="f";
-			});
-			
-			allParents.forEach(function(name){
-				array.filter(function(person){
-					if(person["mother"]==name["name"]) {
-						allGender[name.name]=name.born;
-					}
-				});
-			});
-		 
-			array.filter(function(person){
-				for(key in allGender){
-					if(key==person["name"])
-					genderArr.push(person); 
-				}
-			})
-			 return genderArr;
-	}
-}
 function searchFmales(array){
 	return array.filter(function(person){
 		return person["sex"]=="f";
 	})
 };
+
 function searchMother(arrayMother, mainArray){
-	var diff=[]
+	var diff=[];
+
 	arrayMother.forEach(function(name){
 		mainArray.filter(function(person){
 			if(person["mother"]==name["name"]){
@@ -80,29 +60,18 @@ function searchMother(arrayMother, mainArray){
 			}
 		})
 	});
-	function average(array) {
-		function plus(a, b) { return a + b; }
-		return array.reduce(plus) / array.length;
-	}
+
 	return average(diff);
 }
-var difference=[];
 
-searchParent(ancestry, "mother").forEach(function(name){
-	ancestry.forEach(function(person){
-		if(person["mother"]==name["name"]){
-			difference.push(person.born - name.born);
-		}
-	})
-});
 
 function average(array) {
 	function plus(a, b) { return a + b; }
+
 	return array.reduce(plus) / array.length;
 }
 
-document.write(searchMother(searchFmales(ancestry),ancestry))
-console.log(searchMother(searchFmales(ancestry),ancestry))
+console.log(searchMother(searchFmales(ancestry), ancestry)); // Mother-child age difference
 
 
 
