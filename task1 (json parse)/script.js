@@ -1,4 +1,3 @@
-// Mother-child age difference ========================================
 
 var ANCESTRY_FILE = JSON.stringify([
 	{"name": "Carolus Haverbeke", "sex": "m", "born": 1832, "died": 1905, "father": "Carel Haverbeke", "mother": "Maria van Brussel"},
@@ -43,6 +42,8 @@ var ANCESTRY_FILE = JSON.stringify([
 ]);
 
 var ancestry = JSON.parse(ANCESTRY_FILE);
+
+// Mother-child age difference ========================================
 
 function searchFmales(array){
 	return array.filter(function(person){
