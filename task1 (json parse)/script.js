@@ -84,6 +84,7 @@ window.onload = function() {
 	// Historical life expectancy===========================
 
 	function historicalLifeExpectancy(json, century) {
+
 		let localArrayAge = [];
 
 		function average(array) {
