@@ -1,0 +1,1 @@
+need install node-static
